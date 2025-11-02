@@ -1,36 +1,154 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dashboard de Facturación - Frontend
 
-## Getting Started
+Este es un proyecto de [Next.js](https://nextjs.org) para el dashboard de facturación, construido con TypeScript, Tailwind CSS v4, y componentes modernos.
 
-First, run the development server:
+## 🚀 Características Implementadas
 
+### ✅ Completadas
+
+- **✅ Lista de facturas** - Vista completa de facturas con paginación, filtros y ordenamiento
+- **✅ Detalle de factura** - Página detallada con información completa, items, archivos y logs
+- **✅ Búsqueda básica** - Búsqueda avanzada con filtros rápidos, sugerencias y resultados destacados
+- **✅ Lista de emisores** - Gestión y visualización de emisores de facturas con estadísticas
+- **✅ Detalle de emisor** - Página detallada con información completa del emisor, estadísticas mensuales y productos más frecuentes
+
+### 🔄 En Progreso
+
+- **⏳ Reporte de ventas** - Análisis y reportes de ventas
+- **⏳ Optimizaciones básicas** - Mejoras de rendimiento y UX
+
+## 🛠️ Tecnologías
+
+- **Next.js 15.4.3** - Framework de React
+- **TypeScript** - Tipado estático
+- **Tailwind CSS v4** - Framework de CSS
+- **Lucide React** - Iconos
+- **Axios** - Cliente HTTP
+- **Zod** - Validación de esquemas
+
+## 🚀 Inicio Rápido
+
+1. **Instalar dependencias:**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Ejecutar servidor de desarrollo:**
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Abrir en el navegador:**
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Estructura del Proyecto
 
-## Learn More
+```
+src/
+├── app/                    # Páginas de la aplicación
+│   ├── dashboard/         # Dashboard principal
+│   ├── invoices/          # Gestión de facturas
+│   └── auth/              # Autenticación
+├── components/            # Componentes reutilizables
+│   ├── ui/               # Componentes de UI base
+│   ├── layout/           # Componentes de layout
+│   ├── auth/             # Componentes de autenticación
+│   └── invoices/         # Componentes específicos de facturas
+├── hooks/                # Custom hooks
+├── lib/                  # Utilidades y configuración
+├── types/                # Definiciones de TypeScript
+└── utils/                # Funciones utilitarias
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🔧 Funcionalidades Principales
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Lista de Facturas
+- ✅ Vista tabular con paginación
+- ✅ Filtros por estado, fecha, emisor
+- ✅ Ordenamiento por columnas
+- ✅ Búsqueda global avanzada
+- ✅ Acciones rápidas (ver, editar, descargar)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Detalle de Factura
+- ✅ Información completa de la factura
+- ✅ Datos del emisor y receptor
+- ✅ Lista de items con detalles
+- ✅ Archivos adjuntos
+- ✅ Historial de actividad
+- ✅ Resumen financiero
 
-## Deploy on Vercel
+### Búsqueda Avanzada
+- ✅ Búsqueda por número: `numero:123`
+- ✅ Búsqueda por emisor: `emisor:Cable`
+- ✅ Búsqueda por fecha: `fecha:2024-01`
+- ✅ Búsqueda por monto: `monto:>1000`
+- ✅ Filtros rápidos por estado
+- ✅ Sugerencias de búsqueda
+- ✅ Resultados con estadísticas
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Lista de Emisores
+- ✅ Vista de emisores con estadísticas
+- ✅ Filtros y búsqueda por nombre/RUC
+- ✅ Ordenamiento por total facturas, monto, fecha
+- ✅ Tarjetas con información resumida
+- ✅ Paginación del servidor
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Detalle de Emisor
+- ✅ Información completa del emisor
+- ✅ Estadísticas de facturas (total, procesadas, pendientes, errores)
+- ✅ Actividad reciente y última factura
+- ✅ Estadísticas mensuales
+- ✅ Productos más frecuentes
+- ✅ Navegación entre emisores
+
+## 🔐 Autenticación
+
+El sistema incluye:
+- ✅ Token encriptado en localStorage
+- ✅ Interceptores de Axios para autenticación
+- ✅ Protección de rutas
+- ✅ Manejo de errores de autenticación
+
+## 🎨 UI/UX
+
+- ✅ Diseño responsive
+- ✅ Componentes accesibles
+- ✅ Iconografía consistente
+- ✅ Estados de carga y error
+- ✅ Navegación intuitiva
+
+## 📊 API Integration
+
+- ✅ Integración con backend REST
+- ✅ Manejo de errores HTTP
+- ✅ Paginación del servidor
+- ✅ Filtros y ordenamiento
+- ✅ Búsqueda avanzada
+
+## 🚧 Próximas Funcionalidades
+
+### Reporte de Ventas
+- [ ] Dashboard de métricas
+- [ ] Gráficos y visualizaciones
+- [ ] Filtros por período
+- [ ] Exportación de reportes
+
+### Optimizaciones
+- [ ] Lazy loading de componentes
+- [ ] Optimización de imágenes
+- [ ] Caching de datos
+- [ ] Mejoras de rendimiento
+
+## 🤝 Contribución
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📝 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
