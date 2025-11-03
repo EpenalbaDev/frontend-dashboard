@@ -3,6 +3,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import Link from 'next/link';
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { loginSchema, type LoginFormData } from '@/lib/validations';
@@ -93,6 +94,18 @@ const LoginForm: React.FC = () => {
               >
                 {isLoading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
               </Button>
+
+              <div className="mt-6 text-center">
+                <p className="text-sm text-gray-600">
+                  ¿No tienes cuenta?{' '}
+                  <Link
+                    href="/register"
+                    className="font-medium text-blue-600 hover:text-blue-500"
+                  >
+                    Regístrate aquí
+                  </Link>
+                </p>
+              </div>
 
               {/* Botón de prueba para verificar conexión */}
               <Button

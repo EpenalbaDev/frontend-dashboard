@@ -5,7 +5,7 @@ export interface User {
   nombre: string;
   apellido: string;
   email: string;
-  rol: 'admin' | 'usuario' | 'auditor';
+  rol: 'super_admin' | 'admin' | 'usuario' | 'auditor';
   activo?: boolean;
   ultimo_acceso?: string;
   created_at?: string;
@@ -547,4 +547,17 @@ export interface EmpresaFilters {
   activo?: boolean;
   plan?: string;
   search?: string;
-} 
+}
+
+export interface RegisterData {
+  nombre: string;
+  apellido: string;
+  email: string;
+  password: string;
+  empresa_nombre: string;
+  empresa_ruc: string;
+  empresa_direccion?: string;
+  empresa_telefono?: string;
+}
+
+export interface RegisterFormData extends RegisterData {} 

@@ -45,6 +45,7 @@ export const FILTERS = {
 export const ROUTES = {
   HOME: '/',
   LOGIN: '/login',
+  REGISTER: '/register',
   DASHBOARD: '/dashboard',
   INVOICES: '/invoices',
   INVOICE_DETAIL: '/invoices/[id]',

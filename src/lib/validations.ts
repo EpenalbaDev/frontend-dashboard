@@ -40,8 +40,23 @@ export const searchSchema = z.object({
   filters: z.record(z.string(), z.unknown()).optional(),
 });
 
+// Esquema de validación para registro
+export const registerSchema = z.object({
+  nombre: z.string().min(2, 'Nombre debe tener al menos 2 caracteres').max(100),
+  apellido: z.string().min(2, 'Apellido debe tener al menos 2 caracteres').max(100),
+  email: z.string().email('Email inválido'),
+  password: z.string()
+    .min(8, 'Password debe tener al menos 8 caracteres')
+    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/, 'Password debe contener mayúscula, minúscula y número'),
+  empresa_nombre: z.string().min(2, 'Nombre de empresa requerido').max(255),
+  empresa_ruc: z.string().min(8, 'RUC debe tener al menos 8 caracteres').max(50),
+  empresa_direccion: z.string().max(500).optional().or(z.literal('')),
+  empresa_telefono: z.string().max(50).optional().or(z.literal('')),
+});
+
 // Tipos inferidos de los esquemas
 export type LoginFormData = z.infer<typeof loginSchema>;
+export type RegisterFormData = z.infer<typeof registerSchema>;
 export type InvoiceFilters = z.infer<typeof invoiceFiltersSchema>;
 export type StatusChangeData = z.infer<typeof statusChangeSchema>;
 export type SearchData = z.infer<typeof searchSchema>; 

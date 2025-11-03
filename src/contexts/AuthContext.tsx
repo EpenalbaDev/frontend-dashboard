@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { User, LoginCredentials } from '@/types';
+import { User, LoginCredentials, RegisterData } from '@/types';
 import { authService } from '@/lib/api';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { useEncryptedToken, cleanExpiredTokens } from '@/utils/encryption';
@@ -12,6 +12,7 @@ interface AuthContextType {
   isLoading: boolean;
   error: string | null;
   login: (credentials: LoginCredentials) => Promise<void>;
+  register: (data: RegisterData) => Promise<void>;
   logout: () => Promise<void>;
   clearError: () => void;
 }
@@ -161,6 +162,38 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  const register = async (data: RegisterData) => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      
+      console.log('Attempting registration:', data.email);
+      const response = await authService.register(data);
+      console.log('Registration response:', response);
+      
+      if (response.success) {
+        const { token: newToken, user: userData } = response.data;
+        console.log('Registration successful, saving token and user data');
+        
+        setToken(newToken);
+        setStoredUser(userData);
+        setUser(userData);
+        
+        console.log('Token and user saved successfully');
+      } else {
+        console.log('Registration failed:', response.message);
+        setError(response.message || 'Error al registrarse');
+      }
+    } catch (err) {
+      console.error('Registration error:', err);
+      const errorMessage = (err as { response?: { data?: { message?: string } } })?.response?.data?.message || 'Error al conectar con el servidor';
+      setError(errorMessage);
+      throw err; // Re-throw para que el componente pueda manejarlo
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const logout = async () => {
     try {
       await authService.logout();
@@ -185,6 +218,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     isLoading,
     error,
     login,
+    register,
     logout,
     clearError,
   };

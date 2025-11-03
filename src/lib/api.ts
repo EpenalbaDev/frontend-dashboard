@@ -15,7 +15,8 @@ import {
   ExportRequest,
   Empresa,
   EmpresaCreateData,
-  EmpresaUpdateData
+  EmpresaUpdateData,
+  RegisterData
 } from '@/types';
 import { decryptToken, isTokenEncrypted } from '@/utils/encryption';
 
@@ -223,6 +224,11 @@ export const authService = {
     empresa_id?: number | null;
   }) => {
     const response = await api.post<ApiResponse<User>>('/auth/users', data);
+    return response.data;
+  },
+
+  register: async (data: RegisterData) => {
+    const response = await api.post<ApiResponse<{ token: string; user: User }>>('/auth/register', data);
     return response.data;
   },
 };
